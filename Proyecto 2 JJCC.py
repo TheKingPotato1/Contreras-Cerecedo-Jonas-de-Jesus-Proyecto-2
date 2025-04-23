@@ -83,7 +83,32 @@ model.add(Reshape((5, len(alphabet))))
 model.compile(optimizer=Adam(), loss='categorical_crossentropy', metrics=['accuracy'])
 
 
-CT = model.fit(X_train, y_train, epochs=50, batch_size=32, validation_data=(X_test, y_test))
+CT = model.fit(X_train, y_train, epochs=10, batch_size=32, validation_data=(X_test, y_test))
+
+plt.figure(figsize=(12, 4))
+
+# Precisión
+plt.subplot(1, 2, 1)
+plt.plot(CT.history['accuracy'], label='Precisión en entrenamiento')
+plt.plot(CT.history['val_accuracy'], label='Precisión en validación')
+plt.title('Precisión durante el entrenamiento')
+plt.xlabel('Época')
+plt.ylabel('Precisión')
+plt.legend()
+
+# Pérdida
+plt.subplot(1, 2, 2)
+plt.plot(CT.history['loss'], label='Pérdida en entrenamiento')
+plt.plot(CT.history['val_loss'], label='Pérdida en validación')
+plt.title('Pérdida durante el entrenamiento')
+plt.xlabel('Época')
+plt.ylabel('Pérdida')
+plt.legend()
+
+plt.show()
+
+
+
 
 test_loss, test_acc = model.evaluate(X_test, y_test)
 print(f"Precisión en el conjunto de prueba: {test_acc * 100:.2f}%")
@@ -122,4 +147,5 @@ def show_predictions(images, labels, predictions, alphabet):
 
 
 show_predictions(X_test, y_test, predicciones, alphabet)
+
 
