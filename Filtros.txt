@@ -1,0 +1,9 @@
+Los filtros que se usaron en el modelo fueron:
+1.- Filtro: Conversión a escala de grises
+2.- Filtro: Umbralización binaria (blanco y negro)
+3.- Filtro: Equalización de histograma 
+4.- Filtro: Desenfoque gaussiano
+5.- Filtro: Umbralización adaptativa
+6.- Filtro: Morfología
+
+De los cuales al final viendo los resultados se usaron el filtro 1 y 2, ya que con ellos se obtuvo una precisión del 62% a comparación de usar los todos con una precisión del 42%. 
